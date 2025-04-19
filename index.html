@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac White - Premium Cosmetics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styling - WHITE THEME */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Light off-white background */
+            color: #333333; /* Dark grey text color */
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px; /* Max width for larger screens */
+            margin: 30px auto; /* Adjusted margin */
+            padding: 30px; /* Increased padding */
+            background-color: #ffffff; /* White container background */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+            text-align: center; /* Center content within container */
+        }
+
+        /* Stylish Headings (Dark Text on Light Background) */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #333333; /* Dark grey for headings */
+            font-weight: 700;
+            margin-bottom: 0.8em;
+            text-align: left; /* Align headings left within sections */
+        }
+
+        h2 {
+             /* Keep pink underline accent */
+            border-bottom: 2px solid #ff85c1;
+            padding-bottom: 5px;
+            display: inline-block;
+            color: #111; /* Slightly darker for H2 */
+            text-align: left; /* Ensure underline aligns left */
+        }
+
+        h3 {
+             color: #555555; /* Medium grey for H3 */
+             font-weight: 700; /* Bolder H3 */
+             text-align: left; /* Align headings left within sections */
+        }
+
+        p {
+            line-height: 1.7;
+            color: #555555; /* Medium grey for paragraphs */
+            font-weight: 400;
+            text-align: left; /* Align paragraphs left within sections */
+        }
+
+        a {
+            color: #d81b60; /* Darker pink for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff69b4; /* Lighter pink on hover */
+        }
+
+        /* Navigation - Light Theme */
+        .navbar {
+            background-color: #ffffff; /* White navbar */
+            padding: 12px 0;
+            text-align: center;
+            margin-bottom: 0; /* Remove bottom margin */
+            border-bottom: 1px solid #eeeeee; /* Light border */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow under navbar */
+            position: sticky; /* Make navbar sticky */
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it's above other content */
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            display: inline;
+            margin: 0 18px;
+        }
+
+        .navbar a {
+            font-family: 'Montserrat', sans-serif;
+            color: #555555; /* Medium grey nav links */
+            font-weight: 700;
+            font-size: 1.05em; /* Slightly smaller nav font */
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        /* Active/Hover Nav Link Style */
+        .navbar a:hover, .navbar a.active {
+            color: #d81b60; /* Dark pink active/hover text */
+            background-color: #fce4ec; /* Very light pink background */
+        }
+
+        /* Removed Brand Logo Styling */
+
+
+        /* Brand Name Specific Styling - White Theme */
+        .brand-name {
+            font-family: 'Playfair Display', serif; /* Changed font to Playfair Display */
+            font-size: 2.8em; /* Adjusted size */
+            font-weight: 700; /* Playfair Display looks good bold */
+            text-align: center;
+            margin-bottom: 25px; /* Adjusted margin to make space for subtitle */
+            margin-top: 10px; /* Restore top margin since logo is removed */
+            color: #ff69b4; /* Accent Pink for brand name */
+        }
+
+        /* Styling for the small black text under the brand name */
+         .brand-subtitle {
+             display: block; /* Ensure it's on a new line */
+             font-size: 14px; /* Slightly medium font size */
+             color: #000000; /* Make the text black */
+             font-weight: 400; /* Ensure it's not bold */
+             margin-top: 3px; /* Small space above */
+             /* text-align: center; */ /* Parent .brand-name is already centered */
+         }
+
+
+        /* Page Section Styling */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out; /* Slightly longer fade */
+            padding-top: 20px;
+            text-align: left; /* Ensure content aligns left within sections */
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === Space between sections on Mobile === */
+        @media (max-width: 767px) { /* Apply only on screens smaller than 768px */
+            .page-section {
+                margin-bottom: 40px; /* Add space below each section */
+            }
+
+             /* Add a bit more margin below the last section in the container on mobile */
+             .container .page-section:last-child.active {
+                 margin-bottom: 20px; /* Adjust as needed */
+             }
+        }
+        /* ====================================== */
+
+
+        /* Home Page Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px; /* Increased gap */
+            margin-top: 30px;
+            margin-bottom: 30px; /* Add margin below the grid */
+        }
+
+        .product-item {
+            background-color: #ffffff; /* White product background */
+            border: 1px solid #eeeeee; /* Light grey border */
+             /* Adjusted padding top to give image space if present */
+            padding: 15px 15px 25px 15px;
+            text-align: center; /* Center content inside product item */
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+            border-color: #ff85c1; /* Pink border on hover */
+        }
+
+        /* === CSS for Product Images === */
+         .product-item img {
+             max-width: 100%; /* Ensure image doesn't overflow container */
+             height: 180px; /* Fixed height for uniform look */
+             object-fit: cover; /* Crop image to fit without distortion */
+             border-radius: 6px; /* Slightly rounded corners for image */
+             /* margin-bottom handled by the text below it */
+             border: 1px solid #f0f0f0; /* Very light border around image */
+         }
+         /* ============================= */
+
+        /* Styling for the product size/price text */
+         .product-item .product-details {
+             font-size: 1em;
+             color: #555;
+             margin-top: 10px; /* Space below the image */
+             margin-bottom: 10px; /* Space above the heading */
+             text-align: center; /* Center the text */
+             font-weight: 700; /* Make it bold */
+         }
+
+
+        .product-item h3 {
+            margin-top: 0; /* Reset top margin */
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            color: #333;
+            font-weight: 700;
+             text-align: center; /* Center heading in product item */
+        }
+
+        .product-item p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Allow paragraph to push button down */
+            text-align: center; /* Center paragraph in product item */
+        }
+
+        /* Button Style - White Theme */
+        .btn {
+            display: inline-block;
+            background-color: #ff69b4; /* Pink button background */
+            color: #ffffff; /* White button text */
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-self: center; /* Center button */
+            margin-top: auto; /* Push button to bottom if flex space allows */
+             text-align: center; /* Ensure text is centered in button */
+        }
+
+        .btn:hover {
+            background-color: #d81b60; /* Darker pink on hover */
+            transform: scale(1.05);
+            color: #ffffff;
+        }
+
+        /* Specific Button Styles */
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+        }
+
+        /* New Full Set Promo Section (Adjusted layout without image) */
+        .full-set-promo {
+             /* Removed flexbox properties */
+             /* display: flex; */
+             /* flex-direction: column; */
+             /* align-items: center; */
+             /* gap: 30px; */
+            margin-top: 40px; /* Space above this section */
+            text-align: center; /* Center content within this block */
+             margin-bottom: 30px; /* Space below this section */
+        }
+
+         /* Removed .full-set-promo .promo-image style */
+         /* Removed responsive styles for the image and promo section layout */
+
+
+         .full-set-promo .promo-content {
+             /* Removed flexbox properties */
+             /* display: flex; */
+             /* flex-direction: column; */
+             /* align-items: center; */
+              display: inline-block; /* Make it inline-block to center the block itself */
+             text-align: center; /* Center text within this block */
+         }
+
+         /* Removed .full-set-promo .full-set-buy-btn style */
+         /* Removed .full-set-promo .promo-text style */
+         .full-set-promo p.promo-text { /* Re-target the text specifically */
+             font-size: 1.1em;
+             color: #555;
+             font-weight: 700; /* Make text bold */
+              text-align: center; /* Ensure text is centered */
+         }
+
+
+        /* Responsive adjustments for the promo section */
+        @media (min-width: 768px) { /* For tablets and desktops */
+            .full-set-promo {
+                /* Removed flexbox properties */
+                /* flex-direction: row; */
+                /* align-items: center; */
+                /* justify-content: center; */
+            }
+
+             /* Removed promo image/content responsive styles */
+            /*
+             .full-set-promo .promo-image { ... }
+             .full-set-promo .promo-content { ... }
+              .full-set-promo .promo-text { ... }
+            */
+        }
+
+
+        /* About Page Specifics */
+        /* Removed certificate image styling */
+        .certificates p {
+             text-align: left; /* Align text left */
+        }
+
+        .social-links {
+            text-align: center; /* Center the social links block */
+        }
+
+        /* Styling for Social Media Links as Buttons */
+        .social-links a {
+            display: inline-block; /* Make them block-like for padding */
+            margin: 0 8px 8px 8px; /* Add space around buttons */
+            padding: 10px 15px; /* Add padding */
+            color: white; /* White text color */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-weight: 700; /* Bold text */
+            transition: opacity 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .social-links a:hover {
+            opacity: 0.9; /* Slightly transparent on hover */
+            color: white; /* Keep text white on hover */
+        }
+
+        /* Specific colors for social media buttons */
+        .social-links a.facebook { background-color: #1877F2; } /* Facebook Blue */
+        .social-links a.instagram { background-color: #E1306C; } /* Instagram Pink */
+        .social-links a.tiktok { background-color: #000000; } /* TikTok Black */
+        .social-links a.youtube { background-color: #FF0000; } /* YouTube Red */
+        .social-links a.whatsapp { background-color: #25D366; } /* WhatsApp Green */
+
+
+        /* Section separation */
+         section > section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee; /* Lighter separator */
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home" data-target="home" class="nav-link active">Home</a></li>
+            <li><a href="#about" data-target="about" class="nav-link">About Us</a></li>
+            <li><a href="#contact" data-target="contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="brand-name">
+            Mac White
+            <span class="brand-subtitle">From Mecca Cosmetics</span>
+        </div>
+
+        <section id="home" class="page-section active">
+            <h2>Our Featured Products</h2>
+            <p>Discover beauty with our high-quality cosmetic range, designed for radiant results.</p>
+
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="WhatsApp_Image_2025-01-29_at_19.16.44_b7b96edd-removebg-preview.png" alt="Mac White Face Cream">
+                    <p class="product-details">30g : 2500/-</p>
+                    <h3>Face Cream</h3>
+                    <p>Nourish and revitalize your skin with our signature face cream, crafted for a radiant complexion.</p>
+                    <a href="https://wa.me/94727351513" target="_blank" class="btn learn-more-btn">ORDER NOW</a>
+                </div>
+                <div class="product-item">
+                    <img src="WhatsApp_Image_2025-01-30_at_09.10.50_d851a230-removebg-preview.png" alt="Mac White Body Lotion">
+                    <p class="product-details">200ml : 3000/-</p>
+                    <h3>Body Lotion</h3>
+                    <p>Hydrate and soften your skin from head to toe with our luxurious, fast-absorbing body lotion.</p>
+                    <a href="https://wa.me/94727351513" target="_blank" class="btn learn-more-btn">ORDER NOW</a>
+                </div>
+                <div class="product-item">
+                     <img src="WhatsApp_Image_2025-01-30_at_09.11.05_8fe52270-removebg-preview.png" alt="Mac White Face Serum">
+                    <p class="product-details">30ml : 2000/-</p>
+                    <h3>Face Serum</h3>
+                    <p>A concentrated, potent formula designed for a radiant, youthful glow and improved skin texture.</p>
+                    <a href="https://wa.me/94727351513" target="_blank" class="btn learn-more-btn">ORDER NOW</a>
+                </div>
+                <div class="product-item">
+                    <img src="Picsart_25-02-22_14-24-42-716 (1).png" alt="Mac White Whitening Soap">
+                    <p class="product-details">100g : 1300/-</p>
+                    <h3>Whitening Soap</h3>
+                    <p>Experience gentle cleansing for a brighter, more even complexion. Suitable for daily use.</p>
+                     <a href="https://wa.me/94727351513" target="_blank" class="btn learn-more-btn">ORDER NOW</a>
+                </div>
+            </div>
+
+            <div class="full-set-promo">
+                <div class="promo-content">
+                     <p class="promo-text">GET AN ADVANCED WHITENING RANGE</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="about" class="page-section">
+            <h2>About Us</h2>
+            <section>
+                <h3>Our Passion for Cosmetics</h3>
+                <p>Welcome to Mac White, where beauty meets quality. We specialize in creating premium cosmetic products designed to enhance your natural radiance. Our formulations are crafted with care, using high-quality ingredients to deliver visible results.</p>
+            </section>
+            <section>
+                <h3>High-Quality Manufacturing</h3>
+                <p>We pride pride ourselves on our meticulous manufacturing process. Every Mac White product is produced in state-of-the-art facilities that adhere to the strictest quality control standards. From sourcing raw materials to final packaging, excellence is our benchmark.</p>
+            </section>
+            <section>
+                <h3>Professional & Certificated</h3>
+                <p>Mac White is a professional manufacturer committed to safety and efficacy. Our processes are backed by industry certifications, ensuring that you receive products that are not only effective but also trustworthy and safe for your skin. We believe in transparency and quality you can rely on.</p>
+                <div class="certificates">
+                    <p>(Certification details or logos can be placed here)</p>
+                </div>
+            </section>
+            <section>
+                <h3>Follow Us</h3>
+                 <div class="social-links">
+                    <p>Connect with us on social media:</p>
+                    <a href="https://www.facebook.com/share/1BYzo7wU2Z/" target="_blank" class="social-link facebook">Facebook</a>
+                    <a href="https://www.instagram.com/mac_white__?igsh=MXd3aXNsM3JoNzZ5" target="_blank" class="social-link instagram">Instagram</a>
+                    <a href="https://www.tiktok.com/@mac_white_?_t=ZS-8veji2EkceQ&_r=1" target="_blank" class="social-link tiktok">TikTok</a>
+                    <a href="https://youtube.com/@macwhiteskincareproducts?si=Y8yRCwrCmoEIszL9" target="_blank" class="social-link youtube">YouTube</a>
+                     </div>
+            </section>
+        </section>
+
+        <section id="contact" class="page-section">
+            <h2>Get In Touch</h2>
+            <section>
+                <h3>Purchase Online</h3>
+                <p>Browse and purchase your favorite Mac White products directly from our online store. Click the link below to start shopping!</p>
+                <a href="https://www.facebook.com/share/p/168BWf8XH5/" target="_blank" class="btn">Visit Online Store</a>
+            </section>
+            <section>
+                <h3>Contact Us via WhatsApp</h3>
+                <p>Have questions about our products or need assistance? Send us a message directly on WhatsApp for a quick response!</p>
+                <a href="https://wa.me/94727351513" target="_blank" class="btn whatsapp-btn">Chat on WhatsApp (072 735 1513)</a>
+            </section>
+            <section>
+                 <p>For partnerships, wholesale inquiries, or other questions, please reach out via WhatsApp or stay tuned for more contact options.</p>
+            </section>
+        </section>
+
+    </div> <script>
+        // JavaScript remains the same for section switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navbar .nav-link');
+            // const learnMoreButtons = document.querySelectorAll('.learn-more-btn'); // Removed this line
+            const pageSections = document.querySelectorAll('.page-section');
+            const navbar = document.querySelector('.navbar');
+            const container = document.querySelector('.container');
+            const navbarHeight = navbar ? navbar.offsetHeight : 70; // Get navbar height for scroll offset
+
+            function showSection(targetId) {
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === targetId);
+                });
+
+                // Scroll adjustment for sticky navbar
+                if(container) {
+                    const elementTop = targetSection ? targetSection.getBoundingClientRect().top + window.pageYOffset : container.offsetTop;
+                    const offsetPosition = elementTop - navbarHeight - 20; // Extra 20px padding
+
+                    if (!document.startViewTransition) {
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.dataset.target;
+
+                    if (document.startViewTransition) {
+                        document.startViewTransition(() => showSection(targetId));
+                    } else {
+                        showSection(targetId);
+                    }
+                    // window.location.hash = '#' + targetId;
+                });
+            });
+
+            // Removed the click event listener for learnMoreButtons as they are now direct links
+            /*
+            learnMoreButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = button.dataset.target;
+
+                    if (document.startViewTransition) {
+                        document.startViewTransition(() => showSection(targetId));
+                    } else {
+                        showSection(targetId);
+                    }
+                    // window.location.hash = '#' + targetId;
+                });
+            });
+            */
+
+            let initialTargetId = 'home';
+            if (window.location.hash) {
+                const hashId = window.location.hash.substring(1);
+                if (document.getElementById(hashId)) {
+                    initialTargetId = hashId;
+                }
+            }
+             setTimeout(() => {
+                 showSection(initialTargetId);
+                 const targetSection = document.getElementById(initialTargetId);
+                 const containerTop = container ? container.offsetTop : 0;
+                 const elementTop = targetSection ? targetSection.getBoundingClientRect().top + window.pageYOffset : containerTop;
+                 const offsetPosition = elementTop - navbarHeight - 20;
+                 if(initialTargetId !== 'home' || window.pageYOffset > 50) {
+                   window.scrollTo({ top: offsetPosition, behavior: 'auto' });
+                 }
+
+             }, 0);
+
+        });
+    </script>
+
+</body>
+</html>
